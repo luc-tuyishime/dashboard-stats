@@ -1,4 +1,3 @@
-// src/types/customer.ts
 export interface Customer {
   id: number
   name: string

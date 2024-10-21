@@ -2,12 +2,6 @@
 
 A dashboard application that displays website visit statistics and customer data from a CRM system.
 
-## Deployment
-
-The application is deployed and can be accessed at:
-
-[https://dashboard-stats-hzok61fts-luc-tuyishimes-projects.vercel.app/dashboard](https://dashboard-stats-hzok61fts-luc-tuyishimes-projects.vercel.app/dashboard)
-
 ## Login Credentials
 
 To access the dashboard, use the following credentials:
@@ -37,7 +31,22 @@ To access the dashboard, use the following credentials:
    yarn install
    ```
 
-3. Run the development server:
+3. **Run Tests:**
+
+   ```
+   npm test
+   ```
+
+4. Set up environment variables:
+   Create a `.env.local` file in the root directory and add the following:
+
+   ```
+   NEXTAUTH_SECRET=your-secret-key-here
+   ```
+
+   Replace `your-secret-key-here` with a random string.
+
+5. Run the development server:
 
    ```
    npm run dev
@@ -45,7 +54,7 @@ To access the dashboard, use the following credentials:
    yarn dev
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Features
 
@@ -55,6 +64,7 @@ To access the dashboard, use the following credentials:
 - Data fetching using React Query
 - Responsive design with Tailwind CSS
 - Client-side caching
+- Jest with testing-library for Unit Tests
 
 ## Folder Structure
 
