@@ -2,6 +2,12 @@
 
 A dashboard application that displays website visit statistics and customer data from a CRM system.
 
+## Deployment
+
+The application is deployed and can be accessed at:
+
+[https://dashboard-stats-hzok61fts-luc-tuyishimes-projects.vercel.app/dashboard](https://dashboard-stats-hzok61fts-luc-tuyishimes-projects.vercel.app/dashboard)
+
 ## Login Credentials
 
 To access the dashboard, use the following credentials:
