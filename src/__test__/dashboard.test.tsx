@@ -1,8 +1,11 @@
 const React = require('react')
-const { render, screen } = require('@testing-library/react')
+import * as RTL from '@testing-library/react'
+
 const { useSession } = require('next-auth/react')
 const { useQuery } = require('react-query')
 const Dashboard = require('@/pages/dashboard').default
+
+const { screen, render } = RTL
 
 jest.mock('next-auth/react', () => ({
   useSession: jest.fn(),
