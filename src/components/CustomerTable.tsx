@@ -3,6 +3,8 @@ import { Customer } from '@/types/customer'
 import SearchBar from './SearchBar'
 import { format, parse } from 'date-fns'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import usePagination from '@/hooks/usePagination'
+import Pagination from './Pagination'
 
 type CustomerTableProps = {
   data: Customer[]
@@ -10,7 +12,7 @@ type CustomerTableProps = {
 
 const CustomerTable: React.FC<CustomerTableProps> = ({ data }) => {
   const [searchTerm, setSearchTerm] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
+
   const itemsPerPage = 10
 
   const filteredData = React.useMemo(() => {
@@ -23,59 +25,10 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ data }) => {
     )
   }, [data, searchTerm])
 
-  const indexOfLastItem = currentPage * itemsPerPage
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
-
-  const totalPages = Math.ceil(filteredData.length / itemsPerPage)
-
-  const Pagination = () => {
-    const pageNumbers = []
-    const maxPageNumbers = 5
-
-    let startPage = Math.max(1, currentPage - Math.floor(maxPageNumbers / 2))
-    let endPage = Math.min(totalPages, startPage + maxPageNumbers - 1)
-
-    if (endPage - startPage + 1 < maxPageNumbers) {
-      startPage = Math.max(1, endPage - maxPageNumbers + 1)
-    }
-
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(i)
-    }
-
-    return (
-      <div className="flex items-center justify-center space-x-2 mt-4">
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronLeft size={20} />
-        </button>
-        {pageNumbers.map((number) => (
-          <button
-            key={number}
-            onClick={() => setCurrentPage(number)}
-            className={`w-10 h-10 rounded-full ${
-              currentPage === number
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-            }`}
-          >
-            {number}
-          </button>
-        ))}
-        <button
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-          disabled={currentPage === totalPages}
-          className="p-2 rounded-full bg-gray-100 text-gray-600 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
-    )
-  }
+  const { currentItems, currentPage, totalPages, setCurrentPage } = usePagination({
+    data: filteredData,
+    itemsPerPage,
+  })
 
   const formatDate = (dateString: string) => {
     try {
@@ -131,7 +84,7 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ data }) => {
           </table>
         </div>
       </div>
-      <Pagination />
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
     </div>
   )
 }
