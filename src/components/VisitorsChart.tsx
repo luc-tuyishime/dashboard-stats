@@ -37,9 +37,9 @@ const VisitorsChart: React.FC<VisitorsChartProps> = ({ data }) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="views" fill="#8884d8" name="Page Views" />
-          <Bar dataKey="unique_visitors" fill="#82ca9d" name="Unique Visitors" />
-          <Bar dataKey="bounce_rate" fill="#ffc658" name="Bounce Rate" />
+          <Bar dataKey="views" fill="#991b1b" name="Page Views" />
+          <Bar dataKey="unique_visitors" fill="#facc15" name="Unique Visitors" />
+          <Bar dataKey="bounce_rate" fill="#6d28d9" name="Bounce Rate" />
         </BarChart>
       </ResponsiveContainer>
     </div>
