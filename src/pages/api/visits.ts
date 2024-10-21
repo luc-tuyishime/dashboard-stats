@@ -15,7 +15,7 @@ export default async function handler(
   }
 
   try {
-    const response = await fetch(`https://my.api.mockaroo.com/visits.json?key=${MOCKAROO_API_KEY}`)
+    const response = await fetch(`https://my.api.mockaroo.com/visits.json?key=86fc2230`)
     const data = await response.json()
     res.status(200).json(data)
   } catch (error) {

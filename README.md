@@ -13,15 +13,14 @@ To access the dashboard, use the following credentials:
 
 - Node.js (v14 or later)
 - npm or yarn
-- A Mockaroo API key
 
 ## Getting Started
 
 1. Clone the repository:
 
    ```
-   git clone https://github.com/your-username/nextjs-dashboard.git
-   cd nextjs-dashboard
+   git clone https://github.com/luc-tuyishime/dashboard-stats.git
+   cd dashboard-stats
    ```
 
 2. Install dependencies:
@@ -32,18 +31,7 @@ To access the dashboard, use the following credentials:
    yarn install
    ```
 
-3. Set up environment variables:
-   Create a `.env.local` file in the root directory and add the following:
-
-   ```
-   NEXTAUTH_URL=http://localhost:3000
-   NEXTAUTH_SECRET=your-secret-key-here
-   MOCKAROO_API_KEY=your-mockaroo-api-key-here
-   ```
-
-   Replace `your-secret-key-here` with a random string and `your-mockaroo-api-key-here` with your actual Mockaroo API key.
-
-4. Run the development server:
+3. Run the development server:
 
    ```
    npm run dev
@@ -51,7 +39,7 @@ To access the dashboard, use the following credentials:
    yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
 
 ## Features
 
@@ -60,6 +48,7 @@ To access the dashboard, use the following credentials:
 - Customer data table with search and pagination
 - Data fetching using React Query
 - Responsive design with Tailwind CSS
+- Client-side caching
 
 ## Folder Structure
 
@@ -77,7 +66,3 @@ To access the dashboard, use the following credentials:
 - Recharts
 - React Query
 - NextAuth.js
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).

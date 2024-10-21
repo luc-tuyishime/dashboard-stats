@@ -88,34 +88,48 @@ const CustomerTable: React.FC<CustomerTableProps> = ({ data }) => {
   }
 
   return (
-    <div className="bg-gray-100 border-gray-200 p-6 rounded-lg">
-      <h2 className="text-2xl  mb-4 text-gray-800">Customer Data</h2>
+    <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
+      <h2 className="text-2xl font-bold mb-4 text-gray-800">Customer Data</h2>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <div className="overflow-x-auto">
-        <table className="w-full table-auto">
-          <thead>
-            <tr className="bg-gray-200 ">
-              <th className="px-4 py-2 text-left text-gray-500">Name</th>
-              <th className="px-4 py-2 text-left text-gray-500">Email</th>
-              <th className="px-4 py-2 text-left text-gray-500">Signup Date</th>
-              <th className="px-4 py-2 text-left text-gray-500">Last Activity</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((customer) => (
-              <tr key={customer.id} className="border-b hover:bg-gray-50">
-                <td className="px-4 py-2 text-sm text-gray-500">{customer.name}</td>
-                <td className="px-4 py-2 text-sm text-gray-500">{customer.email}</td>
-                <td className="px-4 py-2 text-sm text-gray-500">
-                  {formatDate(customer.signupDate)}
-                </td>
-                <td className="px-4 py-2 text-sm text-gray-500">
-                  {formatDate(customer.lastActivity)}
-                </td>
+      <div className="bg-white rounded-lg overflow-hidden shadow">
+        <div className="overflow-x-auto">
+          <table className="w-full table-auto">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Name
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Email
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Signup Date
+                </th>
+                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Activity
+                </th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {currentItems.map((customer) => (
+                <tr key={customer.id} className="hover:bg-gray-50">
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+                    {customer.name}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+                    {customer.email}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+                    {formatDate(customer.signupDate)}
+                  </td>
+                  <td className="px-4 py-2 whitespace-nowrap text-sm text-gray-500">
+                    {formatDate(customer.lastActivity)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       <Pagination />
     </div>
